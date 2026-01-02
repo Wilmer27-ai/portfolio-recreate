@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Projects({ darkMode }) {
   const [selectedCert, setSelectedCert] = useState(null)
+  const [projectsRef, projectsAnim] = useScrollAnimation('fade-in-left')
+  const [certsRef, certsAnim] = useScrollAnimation('fade-in-right', 0.1, 100)
 
   const projects = [
     {
@@ -87,7 +90,7 @@ function Projects({ darkMode }) {
     <>
       <div className="grid grid-cols-2 gap-4">
         {/* Recent Projects */}
-        <div className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
+        <div ref={projectsRef} className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Projects</h2>
@@ -138,7 +141,7 @@ function Projects({ darkMode }) {
         </div>
 
         {/* Recent Certifications */}
-        <div className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
+        <div ref={certsRef} className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Certifications</h2>

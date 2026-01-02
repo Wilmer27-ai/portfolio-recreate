@@ -1,8 +1,11 @@
 // src/components/ImageCarousel.jsx
 import React from 'react'
 import profileImg from '../assets/profile.jpg'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function ImageCarousel({ darkMode }) {
+  const [carouselRef, carouselAnim] = useScrollAnimation('fade-in')
+  
   // Using the same profile image multiple times for demonstration
   const images = [
     { id: 1, src: profileImg, alt: 'Image 1' },
@@ -14,7 +17,7 @@ function ImageCarousel({ darkMode }) {
   ]
 
   return (
-    <div className={`rounded-lg overflow-hidden ${darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'} shadow-sm`}>
+    <div ref={carouselRef} className={`rounded-lg overflow-hidden ${darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'} shadow-sm`}>
       <div className="p-6">
         <h2 className="text-xl font-semibold">Gallery</h2>
       </div>
@@ -24,7 +27,7 @@ function ImageCarousel({ darkMode }) {
         <div className="flex animate-scroll">
           {/* First set of images */}
           {images.map((image) => (
-            <div key={`first-${image.id}`} className="flex-shrink-0 w-64 h-48 mx-4">
+            <div key={`first-${image.id}`} className="shrink-0 w-64 h-48 mx-4">
               <img
                 src={image.src}
                 alt={image.alt}
@@ -34,7 +37,7 @@ function ImageCarousel({ darkMode }) {
           ))}
           {/* Duplicate set for seamless loop */}
           {images.map((image) => (
-            <div key={`second-${image.id}`} className="flex-shrink-0 w-64 h-48 mx-4">
+            <div key={`second-${image.id}`} className="shrink-0 w-64 h-48 mx-4">
               <img
                 src={image.src}
                 alt={image.alt}

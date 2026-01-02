@@ -91,7 +91,7 @@ function Projects({ darkMode }) {
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Projects</h2>
-          <div className="space-y-4 max-h-[600px] overflow-y-auto">
+          <div className="space-y-4 max-h-150 overflow-y-auto">
             {projects.map((project, idx) => (
               <div 
                 key={idx}

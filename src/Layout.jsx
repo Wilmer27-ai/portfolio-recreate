@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ProfileHeader from './components/ProfileHeader'
 import About from './components/About'
 import Projects from './components/Projects'
+import Footer from './components/Footer'
+import ImageCarousel from './components/ImageCarousel'
 
 function Layout() {
   const [darkMode, setDarkMode] = useState(false)
@@ -21,6 +23,8 @@ function Layout() {
         <div className="space-y-8">
           <About darkMode={darkMode} />
           <Projects darkMode={darkMode} />
+          <Footer darkMode={darkMode} />
+          <ImageCarousel darkMode={darkMode} />
         </div>
         
       </div>

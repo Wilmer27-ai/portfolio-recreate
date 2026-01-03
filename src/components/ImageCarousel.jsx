@@ -1,19 +1,23 @@
 // src/components/ImageCarousel.jsx
 import React from 'react'
-import profileImg from '../assets/profile.jpg'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import image1 from '../assets/image1.png'
+import image2 from '../assets/image2.png'
+import image3 from '../assets/image3.png'
+import image4 from '../assets/image4.png'
+import image5 from '../assets/image5.png'
+import image6 from '../assets/image6.png'
 
 function ImageCarousel({ darkMode }) {
   const [carouselRef, carouselAnim] = useScrollAnimation('fade-in')
   
-  // Using the same profile image multiple times for demonstration
   const images = [
-    { id: 1, src: profileImg, alt: 'Image 1' },
-    { id: 2, src: profileImg, alt: 'Image 2' },
-    { id: 3, src: profileImg, alt: 'Image 3' },
-    { id: 4, src: profileImg, alt: 'Image 4' },
-    { id: 5, src: profileImg, alt: 'Image 5' },
-    { id: 6, src: profileImg, alt: 'Image 6' },
+    { id: 1, src: image1, alt: 'image1' },
+    { id: 2, src: image2, alt: 'image2' },
+    { id: 3, src: image3, alt: 'image3' },
+    { id: 4, src: image4, alt: 'image4' },
+    { id: 5, src: image5, alt: 'image5' },
+    { id: 6, src: image6, alt: 'image6' },
   ]
 
   return (

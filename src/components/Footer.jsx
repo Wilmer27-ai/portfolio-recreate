@@ -33,7 +33,7 @@ function Footer({ darkMode }) {
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Social Links</h2>
           <div className="space-y-3">
             <a 
-              href="https://linkedin.com/in/yourprofile" 
+              href="https://www.linkedin.com/in/wilmersuelo/" 
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center gap-2 text-sm hover:text-blue-600 transition ${
@@ -59,7 +59,7 @@ function Footer({ darkMode }) {
               Github
             </a>
             <a 
-              href="https://instagram.com/yourprofile" 
+              href="https://www.instagram.com/wilmer_suelo/" 
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center gap-2 text-sm hover:text-blue-600 transition ${
@@ -96,12 +96,12 @@ function Footer({ darkMode }) {
                 Let's Talk
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                +63 917 5689
+                +63 9469485103
               </p>
             </div>
             <div>
               <p className={`text-sm font-semibold mb-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Messenger
+                Facebook
               </p>
               <a 
                 href="https://m.me/yourprofile"
@@ -109,7 +109,7 @@ function Footer({ darkMode }) {
                 rel="noopener noreferrer"
                 className="text-sm text-blue-600 hover:text-blue-700 transition"
               >
-                @WilmerSuelo
+                facebook.com/Kweng.Suelo
               </a>
             </div>
           </div>

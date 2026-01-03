@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import cert1 from '../assets/WilmerSuelo-Information Assu-certificate (1).jpg'
+import cert2 from '../assets/WilmerSuelo-Information Assu-certificate.jpg'
+import cert3 from '../assets/WilmerSuelo-Networking 1-certificate.jpg'
+import cert4 from '../assets/WilmerSuelo-Networking 1-letter.jpg'
 
 function Projects({ darkMode }) {
   const [selectedCert, setSelectedCert] = useState(null)
@@ -67,22 +71,32 @@ function Projects({ darkMode }) {
 
   const certifications = [
     {
-      name: 'Certification Name 1',
-      organization: 'Issuing Organization',
-      date: 'January 2025',
-      image: '/path-to-certificate1.jpg'
+      name: 'Introduction to Cybersecurity Certificate',
+      organization: 'Cisco Networking Academy',
+      date: '15 May 2024',
+      image: cert1,
+      type: 'image'
     },
     {
-      name: 'Certification Name 2',
-      organization: 'Issuing Organization',
-      date: 'December 2024',
-      image: '/path-to-certificate2.jpg'
+      name: 'Cybersecurity Essentials Certificate',
+      organization: 'Cisco Networking Academy',
+      date: '3 December 2024',
+      image: cert2,
+      type: 'image'
     },
     {
-      name: 'Certification Name 3',
-      organization: 'Issuing Organization',
-      date: 'November 2024',
-      image: '/path-to-certificate3.jpg'
+      name: 'Introduction to Networks Certificate',
+      organization: 'Cisco Networking Academy',
+      date: '6 November 2024',
+      image: cert3,
+      type: 'image'
+    },
+    {
+      name: 'Networking 1 Letter',
+      organization: 'Cisco Networking Academy',
+      date: '6 November 2024',
+      image: cert4,
+      type: 'image'
     }
   ]
 
@@ -144,34 +158,28 @@ function Projects({ darkMode }) {
         <div ref={certsRef} className={`animate-on-scroll ${certsAnim} p-6 rounded-lg shadow-sm ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
-          <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Certifications</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <h2 className="text-2xl font-bold mb-4 border-b pb-2">Certifications</h2>
+          <div className="space-y-4">
             {certifications.map((cert, idx) => (
-              <div 
+              <button
                 key={idx}
-                className={`p-4 rounded-lg transition-all cursor-pointer flex flex-col justify-between h-full ${
-                  darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
-                }`}
                 onClick={() => setSelectedCert(cert)}
+                className={`block w-full text-left border-b pb-3 last:border-b-0 p-4 rounded transition cursor-pointer ${
+                  darkMode ? 'hover:bg-gray-800 border-gray-700' : 'hover:bg-gray-50 border-gray-200'
+                }`}
               >
-                <div>
-                  <h3 className={`font-bold text-lg mb-2 ${
-                    darkMode ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {cert.name}
-                  </h3>
-                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {cert.organization} • {cert.date}
-                  </p>
-                </div>
-                <div className="mt-2">
-                  <img 
-                    src={cert.image} 
-                    alt={cert.name}
-                    className="w-full h-auto rounded"
-                  />
-                </div>
-              </div>
+                <h3 className={`font-bold text-base hover:text-blue-600 transition ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  {cert.name} 
+                </h3>
+                <p className={`text-sm mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {cert.organization}
+                </p>
+                <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                  Issued: {cert.date}
+                </p>
+              </button>
             ))}
           </div>
         </div>
@@ -180,15 +188,19 @@ function Projects({ darkMode }) {
       {/* Certificate Modal */}
       {selectedCert && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+        className="fixed inset-0 flex items-center justify-center z-50 p-4"
+
           onClick={() => setSelectedCert(null)}
         >
-          <div className={`relative max-w-4xl w-full rounded-lg p-4 ${
-            darkMode ? 'bg-gray-900' : 'bg-white'
-          }`}>
+          <div 
+            className={`relative max-w-5xl w-full max-h-[90vh] rounded-lg p-4 ${
+              darkMode ? 'bg-gray-900' : 'bg-white'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setSelectedCert(null)}
-              className={`absolute top-2 right-2 rounded-full w-8 h-8 flex items-center justify-center transition ${
+              className={`absolute top-2 right-2 rounded-full w-8 h-8 flex items-center justify-center transition z-10 ${
                 darkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'
               }`}
             >
@@ -200,11 +212,15 @@ function Projects({ darkMode }) {
                 {selectedCert.organization} • {selectedCert.date}
               </p>
             </div>
-            <img 
-              src={selectedCert.image} 
-              alt={selectedCert.name}
-              className="w-full h-auto rounded"
-            />
+            
+            {/* Display Image */}
+            <div className="w-full overflow-y-auto max-h-[calc(90vh-120px)]">
+              <img 
+                src={selectedCert.image} 
+                alt={selectedCert.name}
+                className="w-full h-auto rounded"
+              />
+            </div>
           </div>
         </div>
       )}

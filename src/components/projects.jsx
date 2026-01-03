@@ -88,13 +88,13 @@ function Projects({ darkMode }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent Projects */}
         <div ref={projectsRef} className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Projects</h2>
-          <div className="space-y-4 max-h-150 overflow-y-auto">
+          <div className={`space-y-4 max-h-150 overflow-y-auto pr-2 ${darkMode ? 'dark-scrollbar' : ''}`}>
             {projects.map((project, idx) => (
               <div 
                 key={idx}

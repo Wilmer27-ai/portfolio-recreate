@@ -110,3 +110,42 @@ body {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Custom Scrollbar Styling */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Dark mode scrollbar */
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.dark-scrollbar {
+  scrollbar-color: #555 transparent;
+}

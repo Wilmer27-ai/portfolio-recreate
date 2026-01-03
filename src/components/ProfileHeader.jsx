@@ -1,4 +1,5 @@
 import profileImg from '../assets/profile.jpg'
+import resumePdf from '../assets/Suelo_Resume_2025.pdf'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function ProfileHeader({ darkMode, toggleDarkMode }) {
@@ -7,9 +8,9 @@ function ProfileHeader({ darkMode, toggleDarkMode }) {
   const [buttonsRef, buttonsAnim] = useScrollAnimation('fade-in-right', 0.1, 300)
 
   return (
-    <div className="flex justify-between items-start mb-12">
+    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-start mb-12 gap-6">
       {/* Left Side - Profile */}
-      <div className="flex gap-6 items-start">
+      <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start w-full lg:w-auto">
         {/* Profile Image */}
         <div 
           ref={profileRef}
@@ -25,31 +26,34 @@ function ProfileHeader({ darkMode, toggleDarkMode }) {
         </div>
 
         {/* Profile Details */}
-        <div ref={detailsRef} className={`animate-on-scroll ${detailsAnim}`}>
-          <h1 className="text-3xl font-bold mb-2">Wilmer L. Suelo</h1>
-          <p className="text-lg mb-1">
+        <div ref={detailsRef} className={`animate-on-scroll ${detailsAnim} text-center sm:text-left`}>
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2">Wilmer L. Suelo</h1>
+          <p className="text-base sm:text-lg mb-1">
             <svg className="inline w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             Western Visayas
           </p>
-          <p className="text-lg mb-1">
+          <p className="text-base sm:text-lg mb-1">
             <svg className="inline w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
             </svg>
             Bachelor of Science in Information Technology
           </p>
-          <p className="text-lg mb-4">Full Stack Developer</p>
+          <p className="text-base sm:text-lg mb-4">Full Stack Developer</p>
 
           {/* Buttons */}
-          <div ref={buttonsRef} className={`animate-on-scroll ${buttonsAnim} flex gap-3 mt-4`}>
-            <button className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-              darkMode 
-                ? 'bg-white text-black hover:bg-gray-200' 
-                : 'bg-black text-white hover:bg-gray-800'
-            }`}>
+          <div ref={buttonsRef} className={`animate-on-scroll ${buttonsAnim} flex flex-col sm:flex-row gap-3 mt-4`}>
+            <button 
+              onClick={() => window.open(resumePdf, '_blank')}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+                darkMode 
+                  ? 'bg-white text-black hover:bg-gray-200' 
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
+            >
               View Resume
             </button>
             <button className={`px-6 py-2 rounded-lg font-medium border transition-colors ${
@@ -64,8 +68,8 @@ function ProfileHeader({ darkMode, toggleDarkMode }) {
       </div>
 
       {/* Right Side - Dark Mode Toggle */}
-      <div className="flex items-center">
-        <span className={`mr-3 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Dark Mode</span>
+      <div className="flex items-center gap-3 w-full lg:w-auto justify-center lg:justify-end">
+        <span className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Dark Mode</span>
         <label htmlFor="toggle" className="flex items-center cursor-pointer">
           <div className="relative">
             <input 

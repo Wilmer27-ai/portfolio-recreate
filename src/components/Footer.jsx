@@ -10,7 +10,7 @@ function Footer({ darkMode }) {
         darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
       } shadow-sm p-6`}
     >
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Goals Section */}
         <div className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
@@ -86,7 +86,7 @@ function Footer({ darkMode }) {
               </p>
               <a 
                 href="mailto:wilmersuelo27@gmail.com"
-                className="text-sm text-blue-600 hover:text-blue-700 transition"
+                className="text-sm text-blue-600 hover:text-blue-700 transition break-all"
               >
                 wilmersuelo27@gmail.com
               </a>

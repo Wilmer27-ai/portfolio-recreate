@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProfileHeader from './components/ProfileHeader'
 import About from './components/About'
-import Projects from './components/Projects'
+import Projects from './components/projects'
 import Footer from './components/Footer'
 import ImageCarousel from './components/ImageCarousel'
 import Chatbot from './components/Chatbot'

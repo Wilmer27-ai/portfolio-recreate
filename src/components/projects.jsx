@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import cert1 from '../assets/WilmerSuelo-Information Assu-certificate (1).jpg'
-import cert2 from '../assets/WilmerSuelo-Information Assu-certificate.jpg'
-import cert3 from '../assets/WilmerSuelo-Networking 1-certificate.jpg'
-import cert4 from '../assets/WilmerSuelo-Networking 1-letter.jpg'
+import cert1 from '../assets/WilmerSuelo-Information Assu-certificate (1).webp'
+import cert2 from '../assets/WilmerSuelo-Information Assu-certificate.webp'
+import cert3 from '../assets/WilmerSuelo-Networking 1-certificate.webp'
+import cert4 from '../assets/WilmerSuelo-Networking 1-letter.webp'
 
 function Projects({ darkMode }) {
   const [selectedCert, setSelectedCert] = useState(null)

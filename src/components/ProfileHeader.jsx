@@ -56,11 +56,14 @@ function ProfileHeader({ darkMode, toggleDarkMode }) {
             >
               View Resume
             </button>
-            <button className={`px-6 py-2 rounded-lg font-medium border transition-colors ${
-              darkMode 
-                ? 'border-white hover:bg-white hover:text-black' 
-                : 'border-black hover:bg-black hover:text-white'
-            }`}>
+            <button 
+              onClick={() => window.location.href = 'mailto:suelowilmer27@gmail.com'}
+              className={`px-6 py-2 rounded-lg font-medium border transition-colors ${
+                darkMode 
+                  ? 'border-white hover:bg-white hover:text-black' 
+                  : 'border-black hover:bg-black hover:text-white'
+              }`}
+            >
               Send Email
             </button>
           </div>

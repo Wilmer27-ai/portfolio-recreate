@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProfileHeader from './components/ProfileHeader'
 import About from './components/About'
-import projects from './components/projects'
+import Projects from './components/Projects'
 import Footer from './components/Footer'
 import ImageCarousel from './components/ImageCarousel'
 import Chatbot from './components/Chatbot'
@@ -23,7 +23,7 @@ function Layout() {
         {/* Content Sections */}
         <div className="space-y-8">
           <About darkMode={darkMode} />
-          <projects darkMode={darkMode} />
+          <Projects darkMode={darkMode} />
           <Footer darkMode={darkMode} />
           <ImageCarousel darkMode={darkMode} />
         </div>

@@ -90,7 +90,7 @@ function Projects({ darkMode }) {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent Projects */}
-        <div ref={projectsRef} className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
+        <div ref={projectsRef} className={`animate-on-scroll ${projectsAnim} p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Projects</h2>
@@ -141,31 +141,37 @@ function Projects({ darkMode }) {
         </div>
 
         {/* Recent Certifications */}
-        <div ref={certsRef} className={`p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow ${
+        <div ref={certsRef} className={`animate-on-scroll ${certsAnim} p-6 rounded-lg shadow-sm ${
           darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
         }`}>
           <h2 className="text-2xl font-bold mb-4 border-b pb-2">Recent Certifications</h2>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {certifications.map((cert, idx) => (
-              <button
+              <div 
                 key={idx}
-                onClick={() => setSelectedCert(cert)}
-                className={`block w-full text-left border-b pb-3 last:border-b-0 p-2 rounded transition cursor-pointer ${
-                  darkMode ? 'hover:bg-gray-800 border-gray-700' : 'hover:bg-gray-50 border-gray-200'
+                className={`p-4 rounded-lg transition-all cursor-pointer flex flex-col justify-between h-full ${
+                  darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
                 }`}
+                onClick={() => setSelectedCert(cert)}
               >
-                <h3 className={`font-bold text-base hover:text-blue-600 transition ${
-                  darkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {cert.name} 🔍
-                </h3>
-                <p className={`text-sm mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {cert.organization}
-                </p>
-                <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                  Issued: {cert.date}
-                </p>
-              </button>
+                <div>
+                  <h3 className={`font-bold text-lg mb-2 ${
+                    darkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {cert.name}
+                  </h3>
+                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {cert.organization} • {cert.date}
+                  </p>
+                </div>
+                <div className="mt-2">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.name}
+                    className="w-full h-auto rounded"
+                  />
+                </div>
+              </div>
             ))}
           </div>
         </div>

@@ -4,6 +4,7 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Footer from './components/Footer'
 import ImageCarousel from './components/ImageCarousel'
+import Chatbot from './components/Chatbot'
 
 function Layout() {
   const [darkMode, setDarkMode] = useState(false)
@@ -28,6 +29,9 @@ function Layout() {
         </div>
         
       </div>
+      
+      {/* Chatbot - Fixed position */}
+      <Chatbot darkMode={darkMode} />
     </div>
   )
 }

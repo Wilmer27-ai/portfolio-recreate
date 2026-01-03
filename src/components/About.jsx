@@ -34,7 +34,7 @@ function About({ darkMode }) {
         <h2 className="text-2xl font-bold mb-4 border-b pb-2">Experience</h2>
         
         {/* Scrollable Timeline Container */}
-        <div className={`max-h-[700px] overflow-y-auto pr-2 ${darkMode ? 'dark-scrollbar' : ''}`}>
+        <div className={`max-h-[860px] overflow-y-auto pr-2 ${darkMode ? 'dark-scrollbar' : ''}`}>
           <div className="relative pl-8">
             {/* Timeline Line */}
             <div className={`absolute left-[0.6rem] top-0 bottom-0 w-[2px] ${

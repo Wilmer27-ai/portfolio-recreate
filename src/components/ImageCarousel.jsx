@@ -1,12 +1,12 @@
 // src/components/ImageCarousel.jsx
 import React from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import image1 from '../assets/image1.png'
-import image2 from '../assets/image2.png'
-import image3 from '../assets/image3.png'
-import image4 from '../assets/image4.png'
-import image5 from '../assets/image5.png'
-import image6 from '../assets/image6.png'
+import image1 from '../assets/image1.webp'
+import image2 from '../assets/image2.webp'
+import image3 from '../assets/image3.webp'
+import image4 from '../assets/image4.webp'
+import image5 from '../assets/image5.webp'
+import image6 from '../assets/image6.webp'
 
 function ImageCarousel({ darkMode }) {
   const [carouselRef, carouselAnim] = useScrollAnimation('fade-in')

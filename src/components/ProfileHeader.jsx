@@ -1,4 +1,4 @@
-import profileImg from '../assets/profile.jpg'
+import profileImg from '../assets/profile.webp'
 import resumePdf from '../assets/Suelo_Resume_2025.pdf'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 

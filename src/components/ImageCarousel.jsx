@@ -1,5 +1,5 @@
 // src/components/ImageCarousel.jsx
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import image1 from '../assets/image1.webp'
 import image2 from '../assets/image2.webp'
@@ -13,8 +13,12 @@ function ImageCarousel({ darkMode }) {
   const [selectedImage, setSelectedImage] = useState(null)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState(0)
-  const [dragTranslate, setDragTranslate] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0)
   const flexRef = useRef(null)
+  const containerRef = useRef(null)
+  const animationRef = useRef(null)
+  
   
   const images = [
     { id: 1, src: image1, alt: 'image1' },
@@ -25,26 +29,51 @@ function ImageCarousel({ darkMode }) {
     { id: 6, src: image6, alt: 'image6' },
   ]
 
+  // Auto-scroll animation
+  useEffect(() => {
+    if (isDragging) return
+
+    const imageWidth = 280 // 256px (w-64) + 32px (mx-4 * 2) + 8px gap
+    const oneSetWidth = imageWidth * 6 // width of one complete set
+
+    let currentScroll = scrollPosition
+
+    const animate = () => {
+      currentScroll += 0.5 // scroll speed
+      setScrollPosition(currentScroll)
+      animationRef.current = requestAnimationFrame(animate)
+    }
+
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+  }, [isDragging])
+
   const handleMouseDown = (e) => {
     setIsDragging(true)
     setDragStart(e.clientX)
+    setDragOffset(0)
   }
 
   const handleMouseMove = (e) => {
     if (!isDragging) return
     const currentX = e.clientX
     const diff = currentX - dragStart
-    setDragTranslate(diff)
+    setDragOffset(diff)
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
-    setDragTranslate(0)
+    setDragOffset(0)
   }
 
   const handleMouseLeave = () => {
     setIsDragging(false)
-    setDragTranslate(0)
+    setDragOffset(0)
   }
 
   return (
@@ -56,6 +85,7 @@ function ImageCarousel({ darkMode }) {
         
         {/* Carousel Container */}
         <div 
+          ref={containerRef}
           className="relative overflow-hidden"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -64,8 +94,11 @@ function ImageCarousel({ darkMode }) {
         >
           <div 
             ref={flexRef}
-            className={`flex ${isDragging ? '' : 'animate-scroll-seamless'}`}
-            style={isDragging ? { transform: `translateX(${dragTranslate}px)` } : {}}
+            className="flex"
+            style={{ 
+              transform: `translateX(calc(-${scrollPosition % 1680}px + ${dragOffset}px))`,
+              transition: isDragging ? 'none' : 'transform 0s linear'
+            }}
           >
             {/* First set of images */}
             {images.map((image) => (
@@ -78,9 +111,20 @@ function ImageCarousel({ darkMode }) {
                 />
               </div>
             ))}
-            {/* Duplicate set for seamless loop */}
+            {/* Second duplicate set */}
             {images.map((image) => (
               <div key={`second-${image.id}`} className="shrink-0 w-64 h-48 mx-4">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  onClick={() => setSelectedImage(image.src)}
+                  className="w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </div>
+            ))}
+            {/* Third duplicate set for seamless loop */}
+            {images.map((image) => (
+              <div key={`third-${image.id}`} className="shrink-0 w-64 h-48 mx-4">
                 <img
                   src={image.src}
                   alt={image.alt}

@@ -237,6 +237,9 @@ function About({ darkMode }) {
               <span className={`px-4 py-2 rounded-md text-sm font-medium ${
                 darkMode ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-gray-800'
               }`}>MySQL</span>
+              <span className={`px-4 py-2 rounded-md text-sm font-medium ${
+                darkMode ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-gray-800'
+              }`}>Supabase</span>
             </div>
           </div>
 

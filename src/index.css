@@ -15,8 +15,19 @@ body {
   }
 }
 
+/* Seamless infinite scroll animation - goes from 0 to -66.66% with 3x duplication */
+@keyframes scrollSeamless {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-66.66%);
+  }
+}
+
 .animate-scroll-seamless {
-  animation: scrollSeamless 25s linear infinite;
+  animation: scrollSeamless 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll-seamless:hover {

@@ -47,7 +47,7 @@ function ProfileHeader({ darkMode, toggleDarkMode }) {
           {/* Buttons */}
           <div ref={buttonsRef} className={`animate-on-scroll ${buttonsAnim} flex flex-col sm:flex-row gap-3 mt-4`}>
             <button 
-              onClick={() => window.open(resumePdf, '_blank')}
+              onClick={() => window.open(resumePdf + '?v=' + Date.now(), '_blank')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 darkMode 
                   ? 'bg-white text-black hover:bg-gray-200' 

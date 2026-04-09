@@ -5,8 +5,8 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Infinite scroll animation */
-@keyframes scroll {
+/* Seamless infinite scroll animation */
+@keyframes scrollSeamless {
   0% {
     transform: translateX(0);
   }
@@ -15,11 +15,11 @@ body {
   }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
+.animate-scroll-seamless {
+  animation: scrollSeamless 25s linear infinite;
 }
 
-.animate-scroll:hover {
+.animate-scroll-seamless:hover {
   animation-play-state: paused;
 }
 

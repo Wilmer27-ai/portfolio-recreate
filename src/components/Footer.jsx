@@ -85,10 +85,10 @@ function Footer({ darkMode }) {
                 Email
               </p>
               <a 
-                href="mailto:wilmersuelo27@gmail.com"
+                href="mailto:suelowilmer27@gmail.com"
                 className="text-sm text-blue-600 hover:text-blue-700 transition break-all"
               >
-                wilmersuelo27@gmail.com
+                suelowilmer27@gmail.com
               </a>
             </div>
             <div>
